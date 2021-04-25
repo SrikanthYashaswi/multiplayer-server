@@ -13,7 +13,7 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.stereotype.Component;
 
-@EnableBinding(Sink.class)
+@EnableBinding({Sink.class, UserInputSink.class})
 @Component
 public class MessageListener {
     private final GameLobbyService gameLobbyService;
@@ -34,9 +34,10 @@ public class MessageListener {
         this.matchUsers();
     }
 
+    @StreamListener(target = UserInputSink.INPUT)
     public void updateUserCommands(String encodedInput) throws JsonProcessingException {
         final var input = this.typeConverter.getUserInput(encodedInput);
-        this.logger.info(" received message {} ", encodedInput);
+        this.gameInstanceManager.updateInput(input);
     }
 
     private void matchUsers() {
