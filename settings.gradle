@@ -1,0 +1,3 @@
+rootProject.name = 'gamerunner'
+include 'space-shooting'
+

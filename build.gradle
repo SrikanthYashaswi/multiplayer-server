@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+plugins {
+    id 'maven-publish'
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.shrkyash.shootership.gamerunner'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation project(':space-shooting')
+    implementation 'org.projectlombok:lombok:1.18.18'
+    implementation 'junit:junit:4.13.1'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version: '3.1.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

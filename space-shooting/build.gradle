@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.shrkyash.shootership.gameinstance'
+version '0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
