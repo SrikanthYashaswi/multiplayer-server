@@ -2,7 +2,6 @@ package com.shrkyash.shootership.gamerunner.pubsub;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.shrkyash.shootership.gamerunner.model.MatchedPlayerGroup;
-import com.shrkyash.shootership.gamerunner.model.UserInput;
 import com.shrkyash.shootership.gamerunner.services.GameInstanceManager;
 import com.shrkyash.shootership.gamerunner.services.GameLobbyService;
 import com.shrkyash.shootership.gamerunner.utils.TypeConverter;

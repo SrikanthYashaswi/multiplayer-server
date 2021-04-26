@@ -45,8 +45,7 @@ public class CollisionDetector extends Controller<ShootingShipState> {
     @Override
     public void update(ShootingShipState state) {
         Map<String, Mass> locationMap = new HashMap<>();
-        addShip(locationMap, state.getPlayerShip());
-        addShip(locationMap, state.getComputerShip());
+        state.getPlayerShips().forEach(ship -> addShip(locationMap, ship));
         addBullets(locationMap, state.getBullets());
     }
 }

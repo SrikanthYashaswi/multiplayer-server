@@ -3,7 +3,7 @@ package com.shrkyash.shootership.gamerunner.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shrkyash.shootership.gamerunner.model.User;
-import com.shrkyash.shootership.gamerunner.model.UserInput;
+import com.shrkyash.shootership.gameinstance.models.UserInput;
 import org.springframework.stereotype.Component;
 
 @Component

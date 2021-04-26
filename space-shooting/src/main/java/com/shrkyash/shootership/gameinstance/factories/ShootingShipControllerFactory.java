@@ -12,7 +12,6 @@ public class ShootingShipControllerFactory {
         return ControllerChainBuilder
                 .getInstance()
                 .setNext(new PlayerShipController(config))
-                .setNext(new ComputerShipController(config))
                 .setNext(new BulletController(config.getWindowWidth() - 2))
                 .setNext(new CollisionDetector())
                 .setNext(new GameStatsUpdater())

@@ -1,7 +1,7 @@
 package com.shrkyash.shootership.gamerunner.services;
 
 import com.shrkyash.shootership.gamerunner.model.MatchedPlayerGroup;
-import com.shrkyash.shootership.gamerunner.model.UserInput;
+import com.shrkyash.shootership.gameinstance.models.UserInput;
 import com.shrkyash.shootership.gamerunner.pubsub.MessageDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +44,8 @@ public class GameInstanceManager {
     public void updateInput(UserInput userInput) {
         final var instanceId = this.userGameInstanceMap.get(userInput.getId());
         final var gameInstance = this.gameInstanceThreads.get(instanceId);
-        gameInstance.queueMessage(userInput.getGameInput());
+        if(gameInstance!= null){
+            gameInstance.queueMessage(userInput);
+        }
     }
 }

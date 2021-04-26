@@ -1,10 +1,8 @@
 package com.shrkyash.shootership.gameinstance.controller;
 
-import com.shrkyash.shootership.gameinstance.models.ShootingShipState;
 import com.shrkyash.shootership.gameinstance.Config;
-import com.shrkyash.shootership.gameinstance.models.PlayerShip;
+import com.shrkyash.shootership.gameinstance.models.ShootingShipState;
 import com.shrkyash.shootership.gameinstance.models.SimpleBullet;
-import com.shrkyash.shootership.gameinstance.models.base.GameInput;
 
 public class PlayerShipController extends Controller<ShootingShipState> {
     private final Config config;
@@ -12,25 +10,33 @@ public class PlayerShipController extends Controller<ShootingShipState> {
     public PlayerShipController(Config config) {
         this.config = config;
     }
+
     @Override
     public void update(ShootingShipState state) {
-        PlayerShip ship = state.getPlayerShip();
-        GameInput input = state.getUserInput();
-        switch (input) {
+        final var userInput = state.getUserInput();
+        final var updatedShip = state
+                .getPlayerShips()
+                .stream()
+                .filter(ship -> ship.getPlayerId().equals(userInput.getId()))
+                .findFirst();
+        if (updatedShip.isEmpty()) {
+            return;
+        }
+        switch (userInput.getGameInput()) {
             case UP: {
-                if (ship.getY() - 1 > config.getPlayAreaYOrigin()) {
-                    ship.moveUp();
+                if (updatedShip.get().getY() - 1 > config.getPlayAreaYOrigin()) {
+                    updatedShip.get().moveUp();
                 }
                 break;
             }
             case DOWN: {
-                if (ship.getY() + 1 < config.getPlayAreaYBoundary()) {
-                    ship.moveDown();
+                if (updatedShip.get().getY() + 1 < config.getPlayAreaYBoundary()) {
+                    updatedShip.get().moveDown();
                 }
                 break;
             }
             case SHOOT: {
-                state.addBullet(new SimpleBullet(ship.getX() + 1, ship.getY(), ship.getCannonDirection()));
+                state.addBullet(new SimpleBullet(updatedShip.get().getX() + 1, updatedShip.get().getY(), updatedShip.get().getCannonDirection()));
                 break;
             }
         }

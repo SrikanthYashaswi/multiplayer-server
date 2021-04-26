@@ -8,8 +8,8 @@ public class NavigationHelper {
     private NavigationHelper() {
     }
 
-    public static Location getNext(GameInput gameInput, int x, int y) {
-        switch (gameInput) {
+    public static Location getNext(GameInput userInput, int x, int y) {
+        switch (userInput) {
             case UP:
                 y--;
                 break;

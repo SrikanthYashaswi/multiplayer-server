@@ -1,31 +1,26 @@
 package com.shrkyash.shootership.gameinstance.models;
 
 import com.shrkyash.shootership.gameinstance.models.base.Bullet;
-import com.shrkyash.shootership.gameinstance.models.base.GameInput;
+import com.shrkyash.shootership.gameinstance.models.base.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShootingShipState  {
-    private final PlayerShip playerShip;
-    private final ComputerShip computerShip;
+public class ShootingShipState {
+    private final List<Ship> playerShips;
+
     private final List<Bullet> bullets;
     private final GameStats stats;
-    private GameInput userInput;
+    private UserInput userInput;
 
-    public ShootingShipState(PlayerShip playerShip, ComputerShip computerShip, GameStats stats) {
-        this.playerShip = playerShip;
-        this.computerShip = computerShip;
+    public ShootingShipState(List<Ship> playerShips, GameStats stats) {
+        this.playerShips = playerShips;
         this.stats = stats;
         bullets = new ArrayList<>();
     }
 
-    public PlayerShip getPlayerShip() {
-        return playerShip;
-    }
-
-    public ComputerShip getComputerShip() {
-        return computerShip;
+    public List<Ship> getPlayerShips() {
+        return playerShips;
     }
 
     public List<Bullet> getBullets() {
@@ -40,18 +35,17 @@ public class ShootingShipState  {
         return stats;
     }
 
-    public GameInput getUserInput() {
+    public UserInput getUserInput() {
         return userInput;
     }
 
-    public void setUserInput(GameInput lastUserInput) {
+    public void setUserInput(UserInput lastUserInput) {
         this.userInput = lastUserInput;
     }
 
     public Frame toFrame() {
         Frame frame = new Frame();
-        frame.addPixel(playerShip);
-        frame.addPixel(computerShip);
+        playerShips.forEach(frame::addPixel);
         frame.addPixel(stats);
         frame.addPixels(new ArrayList<>(bullets));
         return frame;

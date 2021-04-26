@@ -1,18 +1,18 @@
-package com.shrkyash.shootership.gamerunner.model;
+package com.shrkyash.shootership.gameinstance.models;
 
 import com.shrkyash.shootership.gameinstance.models.base.GameInput;
 
 public class UserInput {
 
     private String id;
-    private GameInput gameInput;
+    private GameInput userInput;
 
     public UserInput() {
     }
 
-    public UserInput(String id, GameInput gameInput) {
+    public UserInput(String id, GameInput userInput) {
         this.id = id;
-        this.gameInput = gameInput;
+        this.userInput = userInput;
     }
 
     public String getId() {
@@ -24,10 +24,10 @@ public class UserInput {
     }
 
     public GameInput getGameInput() {
-        return gameInput;
+        return userInput;
     }
 
-    public void setGameInput(GameInput gameInput) {
-        this.gameInput = gameInput;
+    public void setGameInput(GameInput userInput) {
+        this.userInput = userInput;
     }
 }

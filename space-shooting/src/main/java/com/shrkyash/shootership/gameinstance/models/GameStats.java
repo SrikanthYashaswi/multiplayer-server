@@ -3,32 +3,32 @@ package com.shrkyash.shootership.gameinstance.models;
 import com.shrkyash.shootership.gameinstance.models.base.Pixel;
 
 public class GameStats extends Pixel {
-    private int playerShipHealthPoints = 0;
-    private int computerShipHealthPoints = 0;
+    private int leftShipHealth = 0;
+    private int rightShipHealth = 0;
 
     public GameStats(int x, int y) {
         super(x, y, "");
     }
 
     private String getUpdatedCharacter() {
-        return "Player: " +
-                "♥ ".repeat(playerShipHealthPoints) +
+        return "Left Ship: " +
+                "♥ ".repeat(leftShipHealth) +
                 "\t" +
-                "Computer: " +
-                "♥ ".repeat(computerShipHealthPoints);
+                "Right Ship: " +
+                "♥ ".repeat(rightShipHealth);
     }
 
     private void updateCharacter() {
         this.setCharacter(getUpdatedCharacter());
     }
 
-    public void setPlayerShipHealthPoints(int healthPoints) {
-        this.playerShipHealthPoints = healthPoints;
+    public void setLeftShipHealth(int healthPoints) {
+        this.leftShipHealth = healthPoints;
         updateCharacter();
     }
 
-    public void setComputerShipHealthPoints(int healthPoints){
-        this.computerShipHealthPoints = healthPoints;
+    public void setRightShipHealth(int healthPoints){
+        this.rightShipHealth = healthPoints;
         updateCharacter();
     }
 
