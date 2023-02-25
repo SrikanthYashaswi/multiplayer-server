@@ -6,6 +6,7 @@ until the full blogpost is out.
 
 Project Structure i followed:
 
+```
 src/main/java
 └── com
     └── shrkyash
@@ -36,4 +37,4 @@ src/main/java
                     └── TypeConverter.java
 
 11 directories, 17 files
-
+```
